@@ -26,6 +26,8 @@ jobs:
 
       - name: Render Quarto report
         run: quarto render report.qmd
+
+      - name: Render financial report
         run: quarto render financial_analysis.qmd
 
       - name: Commit results
