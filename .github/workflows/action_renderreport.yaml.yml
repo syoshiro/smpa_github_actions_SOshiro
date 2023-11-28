@@ -13,7 +13,7 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: |
-            any::dplyr
+            any::tidyverse
             any::googlesheets4
             any::gt
 
@@ -23,14 +23,14 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      - name: Render Quarto
-        uses: quarto-dev/quarto-actions/render@v2
+      - name: Render Quarto report
+        run: quarto render report.qmd
 
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git report.html
-          git commit -m 'Data updated' || echo "No changes to commit"
+          git add report.html
+          git commit -m 'Report updated' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
 

@@ -10,7 +10,7 @@ execute:
 ---
 
 ```{r}
-library(dplyr)
+library(tidyverse)
 library(googlesheets4)
 library(gt)
 ```
