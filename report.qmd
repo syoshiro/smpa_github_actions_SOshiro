@@ -15,7 +15,7 @@ library(googlesheets4)
 library(gt)
 ```
 
-Report last updated `r now()`.
+Class Survey Report last updated `r now()`.
 
 ```{r}
 gs4_deauth()
