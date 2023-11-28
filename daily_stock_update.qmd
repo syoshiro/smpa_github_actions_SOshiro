@@ -1,0 +1,58 @@
+---
+title: "Daily Stock Update Application"
+author: "Aaron Kessler"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format:
+  html:
+    self-contained: true
+    toc: true
+    toc-location: left
+    theme: yeti
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(dplyr)
+library(ggplot2)
+library(tidyquant)
+library(gt)
+options(dplyr.summarise.inform = FALSE)
+options(scipen = 999)
+
+
+```
+
+This page uses R code and Github Actions to automatically update daily stock prices for a company over the seven trading days.
+
+# Microsoft
+
+## Table
+
+```{r, echo=FALSE}
+
+ticker <- "MSFT"  
+
+stock_data <- tq_get(ticker, get = "stock.prices", from = "2023-11-01")
+
+lastweek <- stock_data %>% 
+  head(7) %>% 
+  arrange(desc(date))
+
+lastweek %>% 
+  gt()
+
+```
+
+## Chart
+
+```{r, echo=FALSE}
+lastweek %>%
+  ggplot(aes(x = date, y = close)) +
+  geom_line() +
+  labs(title = "Stock Price", y = "Closing Price ($", x = "")
+```
