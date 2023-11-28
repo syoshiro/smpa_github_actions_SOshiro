@@ -16,6 +16,7 @@ jobs:
             any::tidyverse
             any::googlesheets4
             any::gt
+            any::tidyquant
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -25,12 +26,14 @@ jobs:
 
       - name: Render Quarto report
         run: quarto render report.qmd
+        run: quarto render financial_analysis.qmd
 
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add report.html
+          git add financial_analysis.html
           git commit -m 'Report updated' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
 
