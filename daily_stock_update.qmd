@@ -55,4 +55,5 @@ lastweek %>%
   ggplot(aes(x = date, y = close)) +
   geom_line() +
   labs(title = "Stock Price", y = "Closing Price ($", x = "")
+
 ```
