@@ -1,6 +1,6 @@
 ---
 title: "Daily Stock Update Application"
-author: "Aaron Kessler"
+author: "Sarina Oshiro"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 format:
   html:

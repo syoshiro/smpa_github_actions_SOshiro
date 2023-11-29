@@ -29,8 +29,8 @@ jobs:
 
       - name: Commit results
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
+          git config --local user.email "syoshiro@github.com"
+          git config --local user.name "syoshiro"
           git add daily_stock_update.html
           git commit -m 'Report updated' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
